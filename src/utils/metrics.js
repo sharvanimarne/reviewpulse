@@ -25,4 +25,12 @@ function reviewerLoad(prs) {
   return load;
 }
 
-module.exports = { averageTurnaroundHours, reviewerLoad };
+/**
+ * Flags a bottleneck when the average PR review turnaround time exceeds
+ * the given threshold (in hours). Default threshold is 24 hours.
+ */
+function flagBottleneck(avgTurnaroundHours, thresholdHours = 24) {
+  return avgTurnaroundHours > thresholdHours;
+}
+
+module.exports = { averageTurnaroundHours, reviewerLoad, flagBottleneck };
