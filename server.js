@@ -2,9 +2,15 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
+const { router: syncRouter } = require("./src/routes/sync");
+const { router: metricsRouter } = require("./src/routes/metrics");
+
 app.get("/", (req, res) => {
   res.json({ status: "ReviewPulse API running" });
 });
+
+app.use("/api", syncRouter);
+app.use("/api", metricsRouter);
 
 module.exports = app;
 
@@ -12,6 +18,3 @@ if (require.main === module) {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => console.log(`ReviewPulse listening on port ${PORT}`));
 }
-
-const { router: syncRouter } = require("./src/routes/sync");
-app.use("/api", syncRouter);
