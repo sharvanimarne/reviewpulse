@@ -12,3 +12,6 @@ if (require.main === module) {
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => console.log(`ReviewPulse listening on port ${PORT}`));
 }
+
+const { router: syncRouter } = require("./src/routes/sync");
+app.use("/api", syncRouter);
