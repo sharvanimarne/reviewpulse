@@ -7,7 +7,7 @@ const { router: metricsRouter } = require("./src/routes/metrics");
 const { router: authRouter } = require("./src/routes/auth");
 
 app.get("/", (req, res) => {
-  res.json({ status: "ReviewPulse API running" });
+  res.json({ status: "ReviewPulse API is live and healthy" });
 });
 
 app.use("/api", syncRouter);
